@@ -12,6 +12,11 @@ mongoose.connect(mongoUrl);
 
 
 /* GET photos page. Will post new entries into database collection*/
+router.get('/',function(req, res, next){
+	AirplaneData.find(function(error,result){
+		res.json(result);
+	})
+})
 router.post('/airplanedata/post', function(req, res, next) {
 	var planeData = new AirplaneData(); // Create a new planeData object from the AirPlaneData() constructor from line 7
 	planeData.passenger = req.body.passenger;
